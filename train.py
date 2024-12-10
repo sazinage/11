@@ -59,11 +59,13 @@ loss_test_history=[]
 for k in range(n_epochs):
     print(f'epoch {k+1}/{n_epochs}', end=': ', flush=True)
 
+    time_start=time.time()
     loss_train=models.train(model,dataloader_train,loss_fn, optimizer)
+    time_end=time.time()    
     print(f'train loss: {loss_train}')
 
     loss_test=models.test(model,dataloader_test,loss_fn)
-    print(f'test loss: {loss_test}')
+    print(f'test loss: {loss_test} ({time_end-time_start}s)',end=', ')
 
 
     acc_train= models.test_accuracy(model, dataloader_train)
