@@ -32,11 +32,11 @@ def test_accuracy(model,dataloader):
         n_corrects += (label_batch == predict_batch).sum().item()
 
     accuracy=n_corrects / len(dataloader.dataset)
-
     return accuracy
 
 def train(model, dataloader, loss_fn, optimizer):
     model.train()
+    
     for image_batch, label_batch in dataloader:
         logits_batch=model(image_batch)
 
